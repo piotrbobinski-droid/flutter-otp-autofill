@@ -22,7 +22,6 @@ allprojects {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 
 android {
     if (project.android.hasProperty("namespace")) {
@@ -34,10 +33,6 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = '17'
     }
 
     sourceSets {
@@ -54,5 +49,11 @@ android {
         implementation 'com.google.android.gms:play-services-auth-api-phone:18.1.0'
         implementation "androidx.activity:activity:1.9.3"
         implementation "androidx.fragment:fragment:1.8.5"
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     }
 }
